@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
-            sudo docker stop railmap-backend || true
-            sudo docker rm railmap-backend || true
-            sudo docker run -d --name railmap-backend -p 80:80 ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
+              docker pull ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
+              docker stop railmap-backend || true
+              docker rm railmap-backend || true
+              docker run -d --name railmap-backend -p 80:80 ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
