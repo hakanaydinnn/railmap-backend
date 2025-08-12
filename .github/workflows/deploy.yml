@@ -26,10 +26,13 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:${{ env.TAG }} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:${{ env.TAG }} \
+               ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
 
       - name: Push Docker image
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:${{ env.TAG }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/railmap-backend-repo:latest
 
       - name: Deploy on EC2 via SSH
         uses: appleboy/ssh-action@master
